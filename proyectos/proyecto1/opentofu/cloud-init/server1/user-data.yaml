@@ -1,0 +1,17 @@
+#cloud-config
+hostname: apache2
+users:
+  - name: debian
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    shell: /bin/bash
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfBHH+6kXhMfyyuKHOS0SHxWKPTg6jLFoEFWyXNy971 dani
+chpasswd:
+  expire: False
+  users:
+    - name: debian
+      password: debian
+      type: text
+
+
