@@ -1,7 +1,7 @@
 #cloud-config
 hostname: mariadb
 users:
-  - name: ubuntu
+  - name: bdatos
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: users, admin
     shell: /bin/bash
@@ -10,6 +10,6 @@ users:
 chpasswd:
   expire: False
   users:
-    - name: ubuntu
-      password: ubuntu
+    - name: bdatos
+      password: lovesql
       type: text

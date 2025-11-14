@@ -1,7 +1,7 @@
 #cloud-config
 hostname: apache2
 users:
-  - name: debian
+  - name: servidorweb
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: users, admin
     shell: /bin/bash
@@ -10,8 +10,8 @@ users:
 chpasswd:
   expire: False
   users:
-    - name: debian
-      password: debian
+    - name: servidorweb
+      password: web.org
       type: text
 
 
