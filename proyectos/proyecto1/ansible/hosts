@@ -4,13 +4,13 @@ all:
       hosts:
         apache2:
           ansible_host: 192.168.201.2
-          ansible_user: debian
+          ansible_user: servidorweb
           ansible_ssh_private_key_file: ~/.ssh/dani
           
     servidores_bd:
       hosts:
         mariadb:
           ansible_host: 192.168.201.3
-          ansible_user: ubuntu
+          ansible_user: bdatos
           ansible_ssh_private_key_file: ~/.ssh/dani
           

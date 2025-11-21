@@ -40,7 +40,27 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
   when: table_check.query_result[0] | length == 0
 
+- name: Instalar phpmyadmin
+  apt:
+    pkg:
+      - php
+      - libapache2-mod-php
+      - php-mysql
+      - php-json
+      - php-mbstring
+      - php-zip
+      - php-gd
+      - php-curl
+      - php-xml
+      - phpmyadmin
+    state: latest
+    update_cache: yes
 
+- name: Enlace simbólico
+  ansible.builtin.file:
+    src: /usr/share/phpmyadmin
+    dest: /var/www/html/phpmyadmin
+    state: link
 
 - name: Configurar MariaDB para escuchar en todas las interfaces
   ansible.builtin.lineinfile:

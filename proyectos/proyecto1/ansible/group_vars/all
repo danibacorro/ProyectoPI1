@@ -24,6 +24,6 @@ base_web_path: "/var/www/example"
 # Variables de conexión a MariaDB para la aplicación guestbook
 
 guestbook_db_host: "mariadb.example.org"
-guestbook_db_user: "guestbook_user"
-guestbook_db_password: "guestbook_pass"
-guestbook_db_name: "guestbook_db"
+guestbook_db_user: "dani"
+guestbook_db_password: "baco"
+guestbook_db_name: "proyecto"

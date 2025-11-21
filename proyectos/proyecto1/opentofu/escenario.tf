@@ -31,7 +31,7 @@ locals {
     red-datos = {
       name      = "red-datos"
       mode      = "none" # sin conectividad
-      bridge    = "br-datos"
+      bridge    = "br-data"
       autostart = true
     }
   }
