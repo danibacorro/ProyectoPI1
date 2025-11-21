@@ -6,7 +6,7 @@
 - hosts: servidores_web
   become: true
   roles:
-   - role: apache2
+   - role: nginx
 
 - hosts: servidores_bd
   become: true
