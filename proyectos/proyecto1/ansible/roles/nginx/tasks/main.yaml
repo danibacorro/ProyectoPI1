@@ -61,6 +61,41 @@
     state: started
     enabled: yes
 
+- name: Instalar phpmyadmin
+  apt:
+    pkg:
+      - php-mysql
+      - php-json
+      - php-mbstring
+      - php-zip
+      - php-gd
+      - php-curl
+      - php-xml
+      - phpmyadmin
+    state: latest
+    update_cache: yes
+
+- name: Crear VirtualHost para phpMyAdmin
+  template:
+    src: phpmyadmin.conf.j2
+    dest: /etc/nginx/sites-available/phpmyadmin.conf
+
+- name: Activar VirtualHost phpMyAdmin
+  file:
+    src: /etc/nginx/sites-available/phpmyadmin.conf
+    dest: /etc/nginx/sites-enabled/phpmyadmin.conf
+    state: link
+  notify: restart nginx
+
+- name: Configurar phpMyAdmin con IP de la BD
+  template:
+    src: config.inc.php.j2
+    dest: /etc/phpmyadmin/config.inc.php
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+
 - name: Crear enlace simbólico
   file:
     src: /etc/nginx/sites-available/{{ item.name }}

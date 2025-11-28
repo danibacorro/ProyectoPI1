@@ -6,7 +6,8 @@
 - hosts: servidores_web
   become: true
   roles:
-   - role: nginx
+   - nginx
+   - fail2ban
 
 - hosts: servidores_bd
   become: true

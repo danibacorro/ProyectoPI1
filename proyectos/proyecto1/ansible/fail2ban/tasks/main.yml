@@ -1,0 +1,32 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for fail2ban
+
+- name: Instalar fail2ban
+  apt:
+    name: fail2ban
+    state: present
+    update_cache: yes
+
+- name: fail2ban iniciado y habilitado
+  service:
+    name: fail2ban
+    state: started
+    enabled: true
+
+- name: Configurar jails de fail2ban
+  copy:
+    dest: "/etc/fail2ban/jail.local"
+    content: |
+      [DEFAULT]
+      bantime  = 600
+      findtime  = 600
+      maxretry = 5
+
+      [sshd]
+      enabled = true
+      port    = ssh
+      filter  = sshd
+      logpath = /var/log/auth.log
+      maxretry = 5
+  notify: restart fail2ban

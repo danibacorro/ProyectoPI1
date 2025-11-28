@@ -27,3 +27,5 @@ guestbook_db_host: "mariadb.example.org"
 guestbook_db_user: "dani"
 guestbook_db_password: "baco"
 guestbook_db_name: "proyecto"
+
+dbserver_ip: "10.0.0.2"
