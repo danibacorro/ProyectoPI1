@@ -7,6 +7,7 @@ virtualhosts:
       documentroot: /var/www/example
       errorlog: error_example
       accesslog: acceses_example
+      
   - name: biblioteca
     datos:
       nameserver: biblioteca.dani.org
@@ -34,7 +35,6 @@ guestbook_db_user: "dani"
 guestbook_db_password: "baco"
 guestbook_db_name: "proyecto"
 
-dbserver_ip: "10.0.0.2"
 db_name: biblioteca_mvc
 db_user: bibliotecario
 db_pass: lector

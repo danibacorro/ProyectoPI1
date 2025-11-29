@@ -6,7 +6,7 @@ Modificaciones realizadas:
 
 **Modificación de nombres de usuarios y contraseñas**  
 
-En cada servidor, se han modificado las credenciales de acceso. También se ha modificado las credenciales de acceso a la base de datos de la aplicación `Guestbook`.  
+En cada servidor, se han modificado las credenciales de acceso. También se han modificado las credenciales de acceso a la base de datos de la aplicación `Guestbook`.  
 
 **Instalación de phpMyAdmin**  
 

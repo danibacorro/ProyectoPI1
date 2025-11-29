@@ -1,4 +1,4 @@
-- name: ensure mariadb is installed
+- name: Instalar MariaDB
   apt:
     pkg:
       - mariadb-server
@@ -6,13 +6,13 @@
     state: latest
     update_cache: yes
 
-- name: Crear base de datos
+- name: Crear base de datos Guestbook
   community.mysql.mysql_db:
     name: "{{ guestbook_db_name }}"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
-- name: Crear usuario y otorgar privilegios
+- name: Crear usuario y otorgar privilegios para Guestbook
   community.mysql.mysql_user:
     name: "{{ guestbook_db_user }}"
     password: "{{ guestbook_db_password }}"
@@ -21,7 +21,7 @@
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
-- name: Crear usuario phpMyAdmin controluser
+- name: Crear usuario administrador para phpMyAdmin
   community.mysql.mysql_user:
     name: admin
     password: "admin"
@@ -30,18 +30,18 @@
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
-- name: Copiar esquema SQL al servidor MariaDB
+- name: Copiar esquema SQL de Guestbook al servidor MariaDB
   ansible.builtin.copy:
     src: schema.sql
     dest: /tmp/schema.sql
 
-- name: Comprobar si la tabla 'messages' existe
+- name: Comprobar si la tabla 'messages' de Guestbook existe
   community.mysql.mysql_query:
     login_unix_socket: /var/run/mysqld/mysqld.sock
     query: "SHOW TABLES FROM {{ guestbook_db_name }} LIKE 'messages';"
   register: table_check
 
-- name: Importar esquema SQL (solo si la tabla no existe)
+- name: Importar esquema SQL de Guestbook (solo si la tabla no existe)
   community.mysql.mysql_db:
     name: "{{ guestbook_db_name }}"
     state: import

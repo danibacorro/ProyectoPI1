@@ -1,8 +1,6 @@
 <?php
 $i = 1;
-$cfg['Servers'][$i]['host'] = '{{ dbserver_ip }}';
+$cfg['Servers'][$i]['host'] = '{{ db_host }}';
 $cfg['Servers'][$i]['port'] = '3306';
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
-
-$cfg['Servers'][$i]['controluser'] = 'root';
-$cfg['Servers'][$i]['controlpass'] = 'dani';
+?>

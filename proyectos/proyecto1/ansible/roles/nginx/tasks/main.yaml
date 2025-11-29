@@ -6,10 +6,8 @@
       - php8.4-fpm
       - php-mysql
       - php-mbstring
-      - git
     state: present
     update_cache: yes
-
 
 - name: Deshabilitar sitio por defecto de nginx
   file:
@@ -42,26 +40,14 @@
     mode: '0644'
     directory_mode: '0755'
   
-- name: Crear fichero de configuración config.php dentro de la aplicación
+- name: Crear fichero de configuración config.php dentro de la aplicación Guestbook
   ansible.builtin.template:
     src: config.php.j2
     dest: "/{{ base_web_path }}/config.php"
     owner: www-data
     group: www-data
     
-- name: Iniciar y habilitar Nginx
-  service:
-    name: nginx
-    state: started
-    enabled: yes
-
-- name: Iniciar y habilitar php-fpm
-  service:
-    name: php8.4-fpm
-    state: started
-    enabled: yes
-
-- name: Instalar phpmyadmin
+- name: Instalar phpMyAdmin
   apt:
     pkg:
       - php-mysql
@@ -95,7 +81,6 @@
     group: www-data
     mode: '0644'
 
-
 - name: Crear enlace simbólico
   file:
     src: /etc/nginx/sites-available/{{ item.name }}
@@ -104,3 +89,15 @@
   with_items:
     - "{{ virtualhosts }}"
   notify: restart nginx
+
+- name: Iniciar y habilitar Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Iniciar y habilitar php-fpm
+  service:
+    name: php8.4-fpm
+    state: started
+    enabled: yes

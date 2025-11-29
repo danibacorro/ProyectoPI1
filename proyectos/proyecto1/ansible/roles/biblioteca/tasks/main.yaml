@@ -1,17 +1,10 @@
-- name: Instalar dependencias de Python para MySQL y git
+- name: Instalar dependencias de Python para MySQL
   apt:
     name:
       - python3-mysqldb
     state: present
 
-- name: Crear VirtualHost en Nginx
-  template:
-    src: templates/nginx_site.j2
-    dest: /etc/nginx/sites-available/{{ item.name }}
-  with_items:
-    - "{{ virtualhosts }}"
-
-- name: Crear DocumentRoot si no existe
+- name: Crear DocumentRoot de Biblioteca si no existe
   ansible.builtin.file:
     path: "{{ app_path }}"
     state: directory
@@ -19,7 +12,7 @@
     group: www-data
     mode: '0755'
 
-- name: Copiar aplicación biblioteca
+- name: Copiar aplicación Biblioteca
   ansible.builtin.copy:
     src: app_biblio/
     dest: "{{ app_path }}"
@@ -28,7 +21,7 @@
     mode: '0644'
     directory_mode: '0755'
   
-- name: Crear fichero de configuración config.php dentro de la aplicación
+- name: Crear fichero de configuración config.php dentro de la aplicación Biblioteca
   ansible.builtin.template:
     src: config.php.j2
     dest: "/{{ app_path }}/Config/Config.php"

@@ -5,8 +5,6 @@
 
 - hosts: servidores_web
   become: true
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   roles:
    - nginx
    - fail2ban
