@@ -1,0 +1,5 @@
+db_name: biblioteca_mvc
+db_user: bibliotecario
+db_pass: lector
+db_host: 10.0.0.2
+mysql_root_password: root

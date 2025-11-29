@@ -2,6 +2,7 @@
   apt:
     name:
       - nginx
+      - php-cli
       - php8.4-fpm
       - php-mysql
       - php-mbstring
@@ -31,7 +32,6 @@
     mode: '0755'
   with_items:
     - "{{virtualhosts}}"
-
 
 - name: Copiar aplicación Guestbook
   ansible.builtin.copy:

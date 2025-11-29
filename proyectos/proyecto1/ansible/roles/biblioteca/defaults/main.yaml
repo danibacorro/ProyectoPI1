@@ -1,0 +1,12 @@
+# Configuración de la aplicación PHP
+app_name: biblio
+app_root: /var/www/{{ app_name }}
+server_name: biblioteca.dani.org
+php_version: 8.4
+
+# Configuración de la base de datos
+db_host: 10.0.0.2
+db_name: biblioteca_mvc
+db_user: bibliotecario
+db_password: lector
+mysql_root_password: root

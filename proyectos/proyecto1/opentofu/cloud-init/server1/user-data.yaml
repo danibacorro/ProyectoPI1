@@ -1,5 +1,5 @@
 #cloud-config
-hostname: apache2
+hostname: nginx
 users:
   - name: servidorweb
     sudo: ALL=(ALL) NOPASSWD:ALL

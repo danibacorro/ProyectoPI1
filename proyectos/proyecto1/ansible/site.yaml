@@ -5,11 +5,15 @@
 
 - hosts: servidores_web
   become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
    - nginx
    - fail2ban
+   - biblioteca
 
 - hosts: servidores_bd
   become: true
   roles:
-   - role: mariadb
+   - mariadb
+   - bibliobd

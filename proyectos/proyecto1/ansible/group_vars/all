@@ -7,6 +7,12 @@ virtualhosts:
       documentroot: /var/www/example
       errorlog: error_example
       accesslog: acceses_example
+  - name: biblioteca
+    datos:
+      nameserver: biblioteca.dani.org
+      documentroot: /var/www/biblio
+      errorlog: error_biblioteca.dani.org
+      accesslog: acceses_biblioteca.dani.org
 
 
 # Lista con los módulos que hay que activar
@@ -29,3 +35,10 @@ guestbook_db_password: "baco"
 guestbook_db_name: "proyecto"
 
 dbserver_ip: "10.0.0.2"
+db_name: biblioteca_mvc
+db_user: bibliotecario
+db_pass: lector
+
+app_path: /var/www/biblio
+app_base_url: "http://biblioteca.dani.org/"
+db_host: 10.0.0.2

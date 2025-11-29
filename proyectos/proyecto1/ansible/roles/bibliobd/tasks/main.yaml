@@ -1,0 +1,32 @@
+- name: Crear base de datos
+  community.mysql.mysql_db:
+    name: "{{ db_name }}"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Crear usuario MySQL para la aplicación
+  community.mysql.mysql_user:
+    name: "{{ db_user }}"
+    password: "{{ db_pass }}"
+    priv: "{{ db_name }}.*:ALL"
+    host: "%"
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    state: present
+
+
+- name: Copiar dump SQL al servidor MySQL
+  ansible.builtin.copy:
+    src: biblioteca.sql
+    dest: /tmp/biblioteca.sql
+
+- name: Importar estructura y datos en MySQL
+  community.mysql.mysql_db:
+    name: "{{ db_name }}"
+    state: import
+    target: /tmp/biblioteca.sql
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  become: yes

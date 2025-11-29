@@ -26,10 +26,9 @@
     name: admin
     password: "admin"
     host: "%"
-    priv: "proyecto.*:SELECT,INSERT,UPDATE,DELETE"
+    priv: "{{ guestbook_db_name }}.*:ALL"
     state: present
-  become: yes
-
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Copiar esquema SQL al servidor MariaDB
   ansible.builtin.copy:
