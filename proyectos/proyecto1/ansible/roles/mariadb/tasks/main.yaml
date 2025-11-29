@@ -26,7 +26,7 @@
     name: admin
     password: "admin"
     host: "%"
-    priv: "{{ guestbook_db_name }}.*:ALL"
+    priv: "*.*:ALL"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
